@@ -228,3 +228,4 @@ photos/
 story/
 # your working copy with personal content, never committed
 doors.example.json
+doors-*.json

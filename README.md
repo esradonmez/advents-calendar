@@ -1,12 +1,25 @@
 # Advent Calendar (PWA)
 
-## 1. Write the content
+One site, one calendar per person. Shared app code lives at the root; each
+person has a folder (`<name>/`) with their own encrypted `content.json`,
+their own passphrase and their own link:
+
+    https://esradonmez.github.io/advents-calendar/<name>/
+
+Plaintext content lives in `doors-<name>.json` at the root (git-ignored).
+
+## 0. Add a calendar for a person
 
 ```sh
-cp doors.template.json doors.json     # doors.json is git-ignored, it never gets committed
+python3 tools/new-calendar.py <name>
 ```
 
-Edit `doors.json`. Top level:
+This creates `<name>/index.html`, `<name>/manifest.webmanifest` and a starter
+`doors-<name>.json`. Then follow steps 1 and 2 with that file.
+
+## 1. Write the content
+
+Edit `doors-<name>.json` (created by step 0, git-ignored). Top level:
 
 | field   | meaning                                         |
 |---------|-------------------------------------------------|
@@ -36,12 +49,12 @@ folder is git-ignored.
 ## 2. Encrypt
 
 ```sh
-python3 tools/encrypt.py
+python3 tools/encrypt.py doors-<name>.json -o <name>/content.json
 ```
 
-It asks for a passphrase twice and writes `content.json`.
+It asks for a passphrase twice and writes the encrypted file into the person's folder.
 
-Re-run this any time you change `doors.json`. The passphrase is not stored anywhere, so remember it.
+Re-run this any time you change the person's `doors-<name>.json`, with the same passphrase. The passphrase is not stored anywhere, so remember it.
 
 Needs the `cryptography` package. If missing:
 `python3 -m pip install cryptography`.
@@ -52,10 +65,10 @@ Needs the `cryptography` package. If missing:
 python3 -m http.server 8000
 ```
 
-Open <http://localhost:8000/?today=2026-12-05> to preview the calendar as if it
+Open <http://localhost:8000/<name>/?today=2026-12-05> to preview the calendar as if it
 were 5 December. `?reset` clears the saved passphrase and opened doors.
 
-`doors.template.json` is only a template. Encrypt your own `doors.json` with a passphrase of your choice before deploying; never write the passphrase into any committed file.
+`doors.template.json` is only a template. Never write a passphrase into any committed file.
 
 ## 4. Deploy for free (GitHub Pages)
 
@@ -70,10 +83,10 @@ were 5 December. `?reset` clears the saved passphrase and opened doors.
    ```
 3. On GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a
    branch**, branch `main`, folder `/ (root)`. Save.
-4. After a minute the site is live at `https://YOUR_USER.github.io/advents-calendar/`.
+4. After a minute the calendars are live at `https://YOUR_USER.github.io/advents-calendar/<name>/`.
 
-Every later `git push` redeploys. To update the content: edit `doors.json`,
-run the encrypt script, commit `content.json`, push.
+Every later `git push` redeploys. To update a calendar: edit its `doors-<name>.json`,
+run the encrypt script for it, commit `<name>/content.json`, push.
 
 
 ## 5. Install on iPhone
@@ -94,9 +107,8 @@ Earlier doors stay open, so they can revisit them.
 
 ## Files
 
-- `index.html`, `style.css`, `app.js` – the app
-- `crypto.js` – decryption (PBKDF2 + AES-256-GCM via Web Crypto)
-- `tools/encrypt.py` – encrypts `doors.json` → `content.json`
-- `content.json` – encrypted content, safe to commit
-- `doors.template.json` – template
-- `sw.js`, `manifest.webmanifest`, `icons/` – PWA bits (offline shell, home screen icon)
+- `style.css`, `app.js`, `crypto.js`, `sw.js`, `icons/` – shared app code (decryption is PBKDF2 + AES-256-GCM via Web Crypto)
+- `<name>/index.html`, `<name>/manifest.webmanifest`, `<name>/content.json` – one person's calendar
+- `doors-<name>.json` – the person's plaintext content (git-ignored)
+- `tools/new-calendar.py` – creates a person's folder; `tools/encrypt.py` – encrypts their content
+- `doors.template.json` – starter content

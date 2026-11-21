@@ -1,9 +1,9 @@
 // Simple service worker: caches the app shell so the installed app opens
 // instantly and works offline. Network-first so updates show when online.
-const CACHE = 'advent-v2';
+const CACHE = 'advent-v4';
+// Shared app shell. Each calendar's own index.html and content.json are cached on first visit.
 const SHELL = [
-  './', './index.html', './style.css', './app.js', './crypto.js',
-  './content.json', './manifest.webmanifest',
+  './style.css', './app.js', './crypto.js',
   './icons/icon.svg', './icons/apple-touch-icon.png',
   './icons/icon-192.png', './icons/icon-512.png',
 ];
