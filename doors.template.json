@@ -1,0 +1,31 @@
+{
+  "title": "Merry Christmas, Anna!",
+  "intro": "One little surprise for every day until Christmas.\nSome are gifts, some are things for us to do together.",
+  "year": 2026,
+  "doors": [
+    { "day": 1,  "type": "note",     "title": "Welcome to December",      "text": "I made this calendar just for you. Open one door a day, no peeking!" },
+    { "day": 2,  "type": "activity", "title": "Hot chocolate walk",        "text": "Let's grab hot chocolate and walk through the Christmas market this weekend. I'll bring the mittens." },
+    { "day": 3,  "type": "gift",     "title": "Coffee on me",              "text": "A little something for your morning coffee.", "code": "SB-1234-5678-90", "link": "https://www.starbucks.com/card", "linkText": "Redeem card" },
+    { "day": 4,  "type": "activity", "title": "Cookie baking night",       "text": "My kitchen, your playlist. We bake until we run out of flour." },
+    { "day": 5,  "type": "note",     "title": "A memory",                  "text": "Remember that road trip when the car wouldn't start? Still one of my favourite days.", "image": "photos/example.jpg" },
+    { "day": 6,  "type": "note",     "title": "A wee story",               "text": "A story I love. Tap a page to read it.", "image": "photos/cover.jpg", "images": ["photos/page-1.jpg", "photos/page-2.jpg"] },
+    { "day": 7,  "type": "activity", "title": "Movie night",               "text": "Classic Christmas movie, your pick. I'm bringing popcorn." },
+    { "day": 8,  "type": "note",     "title": "Something I like about you","text": "You always notice when someone needs a kind word." },
+    { "day": 9,  "type": "activity", "title": "Ice skating",               "text": "We're going ice skating. Falling is allowed, laughing is mandatory." },
+    { "day": 10, "type": "gift",     "title": "Spotify",                   "text": "A month of music for the winter playlists.", "code": "SPOT-0000-0000" },
+    { "day": 11, "type": "activity", "title": "Candle-lit dinner",         "text": "I'm cooking. You pick the dessert." },
+    { "day": 12, "type": "note",     "title": "Halfway there",             "text": "Twelve doors down, twelve to go. Thank you for being you." },
+    { "day": 13, "type": "gift",     "title": "Tea sampler",               "text": "Your favourite tea shop. Choose a few you have never tried.", "code": "TEA-0000-0000" },
+    { "day": 14, "type": "activity", "title": "Christmas lights drive",    "text": "Evening drive to see the best decorated streets. Blankets and music included." },
+    { "day": 15, "type": "note",     "title": "A small reminder",          "text": "You are doing better than you think." },
+    { "day": 16, "type": "activity", "title": "Board game night",          "text": "We're playing the long one. No quitting halfway." },
+    { "day": 17, "type": "gift",     "title": "Cinema tickets",            "text": "Two tickets. Guess who's coming with you.", "code": "CINE-0000-0000" },
+    { "day": 18, "type": "activity", "title": "Spa afternoon",             "text": "Face masks, fluffy socks, zero plans." },
+    { "day": 19, "type": "note",     "title": "Photo day",                 "text": "A picture from this year that I love." },
+    { "day": 20, "type": "gift",     "title": "Dinner voucher",            "text": "That restaurant we keep talking about. Let's finally go.", "code": "DINE-0000-0000" },
+    { "day": 21, "type": "activity", "title": "Winter solstice walk",      "text": "Shortest day of the year. Let's catch the sunset together." },
+    { "day": 22, "type": "note",     "title": "Thank you",                 "text": "For every late-night call and every bad joke you laughed at anyway." },
+    { "day": 23, "type": "activity", "title": "Gift wrapping party",       "text": "Bring your presents. I have tape, ribbon and far too much glitter." },
+    { "day": 24, "type": "gift",     "title": "Christmas Eve",             "text": "The real present is waiting for you under the tree. Merry Christmas!" }
+  ]
+}

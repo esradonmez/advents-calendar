@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Advent Calendar</title>
+  <meta name="description" content="A little something for every day until Christmas.">
+  <meta name="theme-color" content="#0f1b2d">
+
+  <!-- iOS home-screen app settings -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Advent">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="snow" aria-hidden="true"></div>
+
+  <!-- Passphrase screen -->
+  <section id="unlock" class="screen" hidden>
+    <div class="unlock-card">
+      <div class="unlock-art" aria-hidden="true">🎄</div>
+      <h1>Advent Calendar</h1>
+      <p>This calendar is locked. Enter the secret words you were given.</p>
+      <form id="unlock-form" autocomplete="off">
+        <input id="passphrase" type="password" inputmode="text"
+               autocapitalize="none" autocorrect="off" spellcheck="false"
+               placeholder="secret words" aria-label="Passphrase" required>
+        <button type="submit" id="unlock-btn">Open the calendar</button>
+        <p id="unlock-error" class="error" role="alert" hidden>Hmm, that's not it. Try again.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Calendar -->
+  <main id="calendar" class="screen" hidden>
+    <header class="top">
+      <h1 id="title">Advent Calendar</h1>
+      <p id="intro" class="intro"></p>
+      <p id="status" class="status"></p>
+    </header>
+
+    <div id="grid" class="grid" role="list"></div>
+
+    <p id="install-hint" class="install-hint" hidden>
+      Tip: tap <strong>Share</strong> <span aria-hidden="true">⬆︎</span> then
+      <strong>Add to Home Screen</strong> to keep this as an app.
+      <button type="button" id="install-dismiss" aria-label="Dismiss">✕</button>
+    </p>
+
+    <footer class="foot">
+      <button type="button" id="lock-btn" class="link-btn">Lock calendar</button>
+    </footer>
+  </main>
+
+  <!-- Door content -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <article class="modal-card" role="dialog" aria-modal="true" aria-labelledby="m-title">
+      <button type="button" class="modal-close" data-close aria-label="Close">✕</button>
+      <div class="m-day" id="m-day"></div>
+      <div class="m-kind" id="m-kind"></div>
+      <h2 id="m-title"></h2>
+      <img id="m-image" alt="" hidden>
+      <p id="m-text"></p>
+      <div id="m-gallery" class="gallery" hidden></div>
+      <div id="m-code-wrap" class="code-wrap" hidden>
+        <code id="m-code"></code>
+        <button type="button" id="m-copy">Copy</button>
+      </div>
+      <a id="m-link" class="btn-link" target="_blank" rel="noopener" hidden></a>
+    </article>
+  </div>
+
+  <div id="lightbox" class="lightbox" hidden>
+    <button type="button" class="lightbox-close" aria-label="Close">✕</button>
+    <div class="lightbox-scroll"><img id="lightbox-img" alt=""></div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
